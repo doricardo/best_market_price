@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
-
 class MarketpriceSpider(scrapy.Spider):
     name = 'MarketPrice'
     allowed_domains = ['www.supermercadosmundial.com.br']
