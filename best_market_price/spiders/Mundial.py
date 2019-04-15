@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
-class MercadoMundialSpider(scrapy.Spider):
-    name = 'MercadoMundial'
+class MundialSpider(scrapy.Spider):
+    name = 'Mundial'
     allowed_domains = ['www.supermercadosmundial.com.br']
     start_urls = ['https://www.supermercadosmundial.com.br/ofertas/']
 
