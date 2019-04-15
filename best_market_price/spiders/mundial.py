@@ -29,13 +29,10 @@ class MundialSpider(scrapy.Spider):
         for product in products:
     
             image = product.css('img ::attr(src)').extract_first()
-            name = product.css('span.name-product ::text').extract_first()
+            description = product.css('span.name-product ::text').extract_first()
             price = product.css('span.price-product strong::text').extract_first() + response.css('span.price-product sup::text').extract_first()
             price = price.replace(',','.')
 
-            yield { 'market' : name,
-                    'initial' : initial,
-                    'final' : final,
-                    'category' : category, 
-                    'name' : name,
-                    'price' : price } 
+            price = BestMarketPriceItem(market='mundial', initial=initial, final=final, category=category, name=description, price=price)
+            yield price
+            #yield { 'market' : name, 'initial' : initial, 'final' : final, 'category' : category, 'name' : description, 'price' : price } 
