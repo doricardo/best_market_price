@@ -8,8 +8,7 @@ class MercadoMundialSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        links = response.css('div.item-filtro a::attr(href)')
-        #.getall()
+        links = response.css('div.item-filtro a::attr(href)').get()
 
         for link in links:
             i=1
