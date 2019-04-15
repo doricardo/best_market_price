@@ -14,7 +14,7 @@ class MundialSpider(scrapy.Spider):
             i=1
             while i <= 10:
                 yield scrapy.Request(
-                    link.css('a::attr(href)').get()  + "?page=" + str(i),
+                    link.css('a::attr(href)').extract_first()  + "?page=" + str(i),
                     callback=self.parse_product
                 )
 
