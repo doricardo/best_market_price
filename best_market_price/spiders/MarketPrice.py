@@ -35,6 +35,6 @@ class MarketpriceSpider(scrapy.Spider):
             price = product.css('span.price-product strong::text').get() + response.css('span.price-product sup::text').get()
             price = price.replace(',','.')
 
-            price = BestMarketprice(market='mundial', initial=initial, final=final, category=category, name=name, price=price)
-            yield notice
+            price = BestMarketPriceItem(market='mundial', initial=initial, final=final, category=category, name=name, price=price)
+            yield price
             #yield { 'initial' : initial, 'final' : final, 'category' : category,  'name' : name, 'price' : price } 
