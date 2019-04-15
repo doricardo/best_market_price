@@ -8,8 +8,6 @@ class MundialSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        #links = response.css('div.item-filtro a::attr(href)').getall()
-        
         for link in response.css('div.item-filtro'):
             i=1
             while i <= 10:
@@ -23,8 +21,8 @@ class MundialSpider(scrapy.Spider):
 
 
     def parse_product(self, response):
-        initial = response.css('span.data-oferta ::text').getall()[1]
-        final = response.css('span.data-oferta ::text').getall()[3]
+        initial = response.css('span.data-oferta ::text').extract_first()[1]
+        final = response.css('span.data-oferta ::text').extract_first()[3]
         category = response.url.split('?')[0].split('/')[-1]
         products = response.css('span.link-offers')
 
