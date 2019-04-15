@@ -10,4 +10,9 @@ import scrapy
 class BestMarketPriceItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    market = scrapy.Field()
+    initial = scrapy.Field()
+    final = scrapy.Field()
+    category = scrapy.Field() 
+    name = scrapy.Field()
+    price = scrapy.Field()
