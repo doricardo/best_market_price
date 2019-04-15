@@ -24,7 +24,8 @@ class MarketpriceSpider(scrapy.Spider):
 
 
     def parse_product(self, response):
-
+        initial = response.css('span.data-oferta ::text').getall()[1]
+        final = response.css('span.data-oferta ::text').getall()[3]
         category = response.url.split('?')[0].split('/')[-1]
         products = response.css('span.link-offers')
 
@@ -34,6 +35,9 @@ class MarketpriceSpider(scrapy.Spider):
             name = product.css('span.name-product ::text').get()
             price = product.css('span.price-product strong::text').get() + response.css('span.price-product sup::text').get()
             price = price.replace(',','.')
-            yield { 'category' : category, 
+
+            yield { 'initial' : initial,
+                    'final' : final,
+                    'category' : category, 
                     'name' : name,
                     'price' : price } 
