@@ -8,13 +8,13 @@ class MercadoMundialSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        links = response.css('div.item-filtro a::attr(href)').get()
-
-        for link in links:
+        #links = response.css('div.item-filtro a::attr(href)').getall()
+        
+        for link in response.css('div.item-filtro'):
             i=1
             while i <= 10:
                 yield scrapy.Request(
-                    link  + "?page=" + str(i),
+                    link.css('a::attr(href)').get()  + "?page=" + str(i),
                     callback=self.parse_product
                 )
 
