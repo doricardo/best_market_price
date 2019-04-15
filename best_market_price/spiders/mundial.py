@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from best_market_price.items import BestMarketPriceItem
 
 class MundialSpider(scrapy.Spider):
     name = 'Mundial'
