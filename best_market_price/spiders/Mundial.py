@@ -33,7 +33,8 @@ class MundialSpider(scrapy.Spider):
             price = product.css('span.price-product strong::text').extract_first() + response.css('span.price-product sup::text').extract_first()
             price = price.replace(',','.')
 
-            yield { 'initial' : initial,
+            yield { 'market' : name,
+                    'initial' : initial,
                     'final' : final,
                     'category' : category, 
                     'name' : name,
