@@ -22,8 +22,8 @@ class MundialSpider(scrapy.Spider):
 
 
     def parse_product(self, response):
-        initial = response.css('span.data-oferta ::text').extract_first()[1]
-        final = response.css('span.data-oferta ::text').extract_first()[3]
+        initial = response.css('span.data-oferta ::text').extract()[1]
+        final = response.css('span.data-oferta ::text').extract()[3]
         category = response.url.split('?')[0].split('/')[-1]
         products = response.css('span.link-offers')
 
